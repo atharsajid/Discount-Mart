@@ -1,4 +1,5 @@
 import 'package:discount_mart/Components/components.dart';
+import 'package:discount_mart/Screens/Login/Sign%20In/controller.dart';
 import 'package:discount_mart/Screens/Login/Sign%20Up/sign_up.dart';
 import 'package:discount_mart/Theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +7,10 @@ import 'package:get/get.dart';
 
 class SignIn extends StatelessWidget {
   SignIn({Key? key}) : super(key: key);
-
+  final logincontroller = Get.put(Login());
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passcontroller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -62,6 +64,7 @@ class SignIn extends StatelessWidget {
                   horizontal: MediaQuery.of(context).size.width * 0.1),
               height: 50,
               child: TextField(
+                keyboardType: TextInputType.emailAddress,
                 style: TextStyle(color: white, fontSize: 18),
                 controller: emailcontroller,
                 decoration: InputDecoration(
@@ -77,38 +80,58 @@ class SignIn extends StatelessWidget {
               margin: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.1),
               height: 55,
-              child: TextField(
-                style: TextStyle(color: white, fontSize: 18),
-                controller: emailcontroller,
-                decoration: InputDecoration(
+              child: Obx(() {
+                return TextField(
+                  style: TextStyle(color: white, fontSize: 18),
+                  controller: passcontroller,
+                  decoration: InputDecoration(
                     prefixIcon: Icon(Icons.lock),
                     label: Text("Password"),
-                    hintText: "Enter your Password"),
-              ),
+                    hintText: "Enter your Password",
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        logincontroller.isVisible.toggle();
+                      },
+                      icon: Icon(
+                        logincontroller.isVisible.value
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                      ),
+                    ),
+                  ),
+                  obscureText: logincontroller.isVisible.value,
+                );
+              }),
             ),
             SizedBox(
               height: 20,
             ),
-            OutlinedButton.icon(
-              style: OutlinedButton.styleFrom(
-                backgroundColor: primary,
-                side: BorderSide(color: Colors.transparent, width: 2),
-              ),
-              onPressed: () {},
-              icon: Icon(
-                Icons.person,
-                color: Colors.black,
-                size: 28,
-              ),
-              label: Text(
-                "Sign In",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+            GetBuilder<Login>(builder: (controller) {
+              return OutlinedButton.icon(
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: primary,
+                  side: BorderSide(color: Colors.transparent, width: 2),
                 ),
-              ),
-            ),
+                onPressed: () {
+                  controller.signin(emailcontroller.text, passcontroller.text);
+                  emailcontroller.clear();
+                  passcontroller.clear();
+                },
+                icon: Icon(
+                  Icons.person,
+                  color: Colors.black,
+                  size: 28,
+                ),
+                label: Text(
+                  "Sign In",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              );
+            }),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

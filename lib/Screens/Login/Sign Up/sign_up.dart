@@ -1,10 +1,12 @@
 import 'package:discount_mart/Components/components.dart';
 import 'package:discount_mart/Screens/Login/Sign%20In/sign_in.dart';
+import 'package:discount_mart/Screens/Login/Sign%20Up/controller.dart';
 import 'package:discount_mart/Theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SignUp extends StatelessWidget {
+  final regController = Get.put(Registration());
   SignUp({Key? key}) : super(key: key);
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passcontroller = TextEditingController();
@@ -64,7 +66,7 @@ class SignUp extends StatelessWidget {
               height: 50,
               child: TextField(
                 style: TextStyle(color: white, fontSize: 18),
-                controller: emailcontroller,
+                controller: namecontroller,
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.email),
                     label: Text("Name"),
@@ -93,7 +95,7 @@ class SignUp extends StatelessWidget {
               height: 55,
               child: TextField(
                 style: TextStyle(color: white, fontSize: 18),
-                controller: emailcontroller,
+                controller: passcontroller,
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.lock),
                     label: Text("Password"),
@@ -103,26 +105,33 @@ class SignUp extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            OutlinedButton.icon(
-              style: OutlinedButton.styleFrom(
-                backgroundColor: primary,
-                side: BorderSide(color: Colors.transparent, width: 2),
-              ),
-              onPressed: () {},
-              icon: Icon(
-                Icons.person_add,
-                color: Colors.black,
-                size: 28,
-              ),
-              label: Text(
-                "Sign Up",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+            GetBuilder<Registration>(builder: (controller) {
+              return OutlinedButton.icon(
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: primary,
+                  side: BorderSide(color: Colors.transparent, width: 2),
                 ),
-              ),
-            ),
+                onPressed: () {
+                  controller.signup(emailcontroller.text, passcontroller.text);
+                  emailcontroller.clear();
+                  passcontroller.clear();
+                  namecontroller.clear();
+                },
+                icon: Icon(
+                  Icons.person_add,
+                  color: Colors.black,
+                  size: 28,
+                ),
+                label: Text(
+                  "Sign Up",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              );
+            }),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

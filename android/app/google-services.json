@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1051276463964",
+    "project_id": "discount-mart-51be6",
+    "storage_bucket": "discount-mart-51be6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051276463964:android:51d85fb66c9f6436653b99",
+        "android_client_info": {
+          "package_name": "com.example.discount_mart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1051276463964-krt5tgv4b1puvcs5a8a4ojc5g503cs9u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.discount_mart",
+            "certificate_hash": "19921a934f3c427e841d186a53d36e4643c389bd"
+          }
+        },
+        {
+          "client_id": "1051276463964-ecvipl1r4ii8fu721bqsr8l74ib0lu2f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSqZtn1f6R2wldAZMY1BbVSFv4GtJhkhE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1051276463964-ecvipl1r4ii8fu721bqsr8l74ib0lu2f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

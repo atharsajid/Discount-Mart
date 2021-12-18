@@ -1,5 +1,6 @@
 import 'package:discount_mart/Components/components.dart';
 import 'package:discount_mart/Screens/Login/Sign%20In/sign_in.dart';
+import 'package:discount_mart/Screens/Login/Sign%20Up/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:discount_mart/Theme/theme.dart';
 import 'package:get/get.dart';
@@ -73,7 +74,9 @@ class LoginScreen extends StatelessWidget {
                 backgroundColor: primary,
                 side: BorderSide(color: Colors.transparent, width: 2),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Get.to(SignUp());
+              },
               icon: Icon(
                 Icons.person_add,
                 color: Colors.black,
