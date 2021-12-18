@@ -1,7 +1,8 @@
 import 'package:discount_mart/Screens/Home%20Screen/Home/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:get/get.dart';
+
 
 class Login extends GetxController {
   signin(String email, String password) async {
@@ -27,5 +28,4 @@ class Login extends GetxController {
   }
 
   RxBool isVisible = true.obs;
- 
 }

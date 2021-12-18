@@ -73,6 +73,9 @@ class SignUp extends StatelessWidget {
                     hintText: "Write your name"),
               ),
             ),
+            SizedBox(
+              height: 15,
+            ),
             Container(
               margin: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.1),
@@ -93,13 +96,27 @@ class SignUp extends StatelessWidget {
               margin: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.1),
               height: 55,
-              child: TextField(
-                style: TextStyle(color: white, fontSize: 18),
-                controller: passcontroller,
-                decoration: InputDecoration(
+              child: Obx(
+                () => TextField(
+                  style: TextStyle(color: white, fontSize: 18),
+                  controller: passcontroller,
+                  decoration: InputDecoration(
                     prefixIcon: Icon(Icons.lock),
                     label: Text("Password"),
-                    hintText: "Enter your Password"),
+                    hintText: "Enter your Password",
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        regController.isVisible.toggle();
+                      },
+                      icon: Icon(
+                        regController.isVisible.value
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                      ),
+                    ),
+                  ),
+                  obscureText: regController.isVisible.value,
+                ),
               ),
             ),
             SizedBox(
@@ -113,6 +130,8 @@ class SignUp extends StatelessWidget {
                 ),
                 onPressed: () {
                   controller.signup(emailcontroller.text, passcontroller.text);
+                  controller.saveUser(namecontroller.text, emailcontroller.text,
+                      passcontroller.text);
                   emailcontroller.clear();
                   passcontroller.clear();
                   namecontroller.clear();

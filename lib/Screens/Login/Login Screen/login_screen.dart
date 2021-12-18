@@ -1,4 +1,5 @@
 import 'package:discount_mart/Components/components.dart';
+import 'package:discount_mart/Screens/Login/Login%20Screen/controller.dart';
 import 'package:discount_mart/Screens/Login/Sign%20In/sign_in.dart';
 import 'package:discount_mart/Screens/Login/Sign%20Up/sign_up.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,8 @@ import 'package:discount_mart/Theme/theme.dart';
 import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({Key? key}) : super(key: key);
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -133,9 +135,12 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            Image.asset(
-              "assets/google.png",
-              height: 50,
+            GestureDetector(
+              onTap: () {},
+              child: Image.asset(
+                "assets/google.png",
+                height: 50,
+              ),
             ),
           ],
         ),
