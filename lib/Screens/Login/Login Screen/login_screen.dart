@@ -1,15 +1,22 @@
 import 'package:discount_mart/Components/components.dart';
+import 'package:discount_mart/Screens/Home%20Screen/Home/home_screen.dart';
 import 'package:discount_mart/Screens/Login/Login%20Screen/controller.dart';
 import 'package:discount_mart/Screens/Login/Sign%20In/sign_in.dart';
 import 'package:discount_mart/Screens/Login/Sign%20Up/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:discount_mart/Theme/theme.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
- 
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final googleCont = Get.put(GoogleSignInController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +38,7 @@ class LoginScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              height: 30,
+              height: 5,
               width: double.infinity,
             ),
             Image.asset(
@@ -56,7 +63,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 150,
+              height: 50,
             ),
             OutlinedButton.icon(
               onPressed: () {
@@ -136,7 +143,14 @@ class LoginScreen extends StatelessWidget {
               height: 10,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                googleCont.login();
+                if (googleCont.googleaccount.value == null) {
+                  Get.snackbar("Something went wrong", "try again");
+                } else {
+                  Get.off(HomeScreen());
+                }
+              },
               child: Image.asset(
                 "assets/google.png",
                 height: 50,
