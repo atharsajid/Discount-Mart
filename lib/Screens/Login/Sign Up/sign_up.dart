@@ -33,12 +33,12 @@ class SignUp extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              height: 30,
+              height: 10,
               width: double.infinity,
             ),
             Image.asset(
               "assets/1.png",
-              height: 100,
+              height: 80,
               color: white,
             ),
             Text(
@@ -58,7 +58,8 @@ class SignUp extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 100,
+              height: MediaQuery.of(context).size.height*0.15,
+              
             ),
             Container(
               margin: EdgeInsets.symmetric(
@@ -79,7 +80,7 @@ class SignUp extends StatelessWidget {
             Container(
               margin: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.1),
-              height: 50,
+              height: 40,
               child: TextField(
                 style: TextStyle(color: white, fontSize: 18),
                 controller: emailcontroller,
@@ -95,7 +96,7 @@ class SignUp extends StatelessWidget {
             Container(
               margin: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.1),
-              height: 55,
+              height: 45,
               child: Obx(
                 () => TextField(
                   style: TextStyle(color: white, fontSize: 18),
@@ -120,7 +121,7 @@ class SignUp extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             GetBuilder<Registration>(builder: (controller) {
               return OutlinedButton.icon(

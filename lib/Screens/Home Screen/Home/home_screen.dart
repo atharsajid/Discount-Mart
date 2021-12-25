@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:discount_mart/Screens/Home%20Screen/Drawer/drawer.dart';
 import 'package:discount_mart/Screens/Home%20Screen/Home/controller.dart';
 import 'package:discount_mart/Screens/Login/Login%20Screen/controller.dart';
 import 'package:discount_mart/Theme/theme.dart';
@@ -49,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      drawer: Drawer(),
+      drawer: DrawerTab(),
       body: Column(
         children: [
           Stack(
@@ -118,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onDotClicked: currentpage,
               activeIndex: activeindex,
               count: 5,
-              effect: WormEffect(
+              effect: ExpandingDotsEffect(
                 activeDotColor: primary,
                 dotColor: Colors.grey.withOpacity(0.5),
                 dotWidth: 20,

@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height*0.15,
+              height: MediaQuery.of(context).size.height * 0.15,
             ),
             OutlinedButton.icon(
               onPressed: () {
@@ -129,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height*0.02,
+              height: MediaQuery.of(context).size.height * 0.02,
             ),
             Text(
               "Login with Google",
@@ -140,21 +140,15 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             SizedBox(
-             height: MediaQuery.of(context).size.height*0.02,
+              height: MediaQuery.of(context).size.height * 0.02,
             ),
             GestureDetector(
               onTap: () {
-                Get.to(HomeScreen());
-                // googleCont.login();
-                // if (googleCont.googleaccount.value == null) {
-                //   Center(
-                //     child: CircularProgressIndicator(
-                //       color: primary,
-                //     ),
-                //   );
-                // } else {
-                //   Get.off(HomeScreen());
-                // }
+                // Get.to(HomeScreen());
+                googleCont.login();
+                if (googleCont.googleaccount.value == null) {
+                  Get.dialog(Center(child: CircularProgressIndicator(),));
+                } else {}
               },
               child: Image.asset(
                 "assets/google.png",
